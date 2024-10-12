@@ -3,8 +3,15 @@
 // - Use a type guard to log different messages based on whether the longitude is provided.
 // - Return type: void.
 
-function logCoordinates(coords) {
-  
+
+
+function logCoordinates(coords: [number, number?]): void {
+
+    let result: string = `Latitude: ${coords[0]} `
+    if (coords[1]) {
+        result = `Latitude: ${coords[0]}, Longitude: ${coords[1]} `
+    }
+    console.log(result)
 }
 
 // Expected output:

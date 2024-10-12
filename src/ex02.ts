@@ -7,11 +7,13 @@ interface Team {
   members: { name: string; role: string }[];
 }
 
-function updateTeam(team, updates) {
-
+function updateTeam<T extends Partial<Team>, U extends { members: { name: string; role: string }[] }>(team: T, updates: U): void {
+  team.members = []
+  team.members.push(updates.members[0])
+  console.log(team)
 }
 
 // Expected output:
-const team = { name: "Dev Team", members: [{ name: "Alice", role: "Developer" }] };
-updateTeam(team, { members: [{ name: "Bob", role: "Designer" }] }) 
+const team: Partial<Team> = { name: "Dev Team", members: [{ name: "Alice", role: "Developer" }] };
+updateTeam(team, { members: [{ name: "Bob", role: "Designer" }] })
 // { name: "Dev Team", members: [{ name: "Bob", role: "Designer" }] }

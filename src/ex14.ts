@@ -3,15 +3,17 @@
 // Return type: string.
 
 interface UserProfile {
-  
+    username: string
+    email: string
+    lastLogin?: string
 }
 
-function getLastLoginMessage(user) {
-  
+function getLastLoginMessage(user: UserProfile) {
+    console.log(user.lastLogin ?? "No login recorded")
 }
 
 // Expected output:
-getLastLoginMessage({ username: "user1", email: "user1@example.com", lastLogin: new Date() })
+getLastLoginMessage({ username: "user1", email: "user1@example.com", lastLogin: new Date().toString() })
 // logs the date as a string
 getLastLoginMessage({ username: "user2", email: "user2@example.com" })
 // "No login recorded"
