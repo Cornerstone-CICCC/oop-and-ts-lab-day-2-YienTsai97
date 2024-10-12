@@ -7,8 +7,18 @@ interface Product {
   category: string;
 }
 
-function groupByCategory(products) {
-  
+function groupByCategory(products: Product[]): void {
+  const categoriesFilter: any[] = [...new Set(products.map((product) => product.category))]
+  const groups: object = {}
+  categoriesFilter.forEach((category: String) => groups[category] = [])
+
+  products.forEach((product) => {
+    groups[product.category].push(product)
+  })
+
+
+
+  console.log(groups)
 }
 
 // Expected output:
